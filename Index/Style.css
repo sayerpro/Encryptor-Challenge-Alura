@@ -1,0 +1,89 @@
+* {
+	border: 0px solid #000000;
+}
+
+body {
+	background: #eff1fa;
+}
+
+main {
+	display: flex;
+	width: 1200px;
+	margin: 60px auto 0 auto;
+}
+
+.logoSection {
+	display: inline-block;
+	width: 70%;
+}
+
+.textAreaContainer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#textArea {
+	width: 640px;
+	height: 546px;
+	font-size: 3em;
+	margin: 40px 0;
+	padding: 30px;
+	background-color: #eff1fa;
+}
+
+#textArea::placeholder {
+	color: #0a3871;
+}
+
+.buttonsContent {
+	display: flex;
+	justify-content: center;
+}
+
+#buttonEncrypter {
+	padding: 18px 100px;
+	color: #ffffff;
+	background: #0a3871;
+	font-weight: bold;
+	border-radius: 20px;
+	margin-right: 15px;
+}
+
+#buttonDesencrypter {
+	padding: 18px 100px;
+	color: #0a3871;
+	background: #d8dfe8;
+	font-weight: bold;
+	border-radius: 20px;
+	margin-left: 15px;
+}
+
+.viewerSection {
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	align-content: space-between;
+	background-color: #ffffff;
+	border-radius: 20px;
+}
+
+.encryptEmpty {
+}
+
+.encryptEmptyMessage {
+	margin: 30px 0 0 0;
+	text-align: center;
+}
+
+.encryptEmptyMessage h2 {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.encryptEmptyMessage p {
+	font-size: 20px;
+	margin: 20px 0 0 0;
+}

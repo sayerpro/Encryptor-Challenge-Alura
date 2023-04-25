@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="../Css/Reset.css" />
+		<link rel="stylesheet" type="text/css" href="Style.css" />
+		<script src="Script.js"></script>
+		<title>Encriptador - Alura</title>
+	</head>
+	<body>
+		<main>
+			<section class="logoSection">
+				<div class="logoContainer">
+					<img
+						class="logoContent"
+						src="../Images/Logo.png"
+						alt="Logo de Alura color azul obscuro"
+					/>
+				</div>
+				<div class="textAreaContainer">
+					<textarea
+						placeholder="Digita tu mensaje aqui"
+						name="textArea"
+						id="textArea"
+					></textarea>
+				</div>
+				<div class="buttonsContainer">
+					<div class="buttonsContent">
+						<button id="buttonEncrypter">Encriptar</button>
+						<button id="buttonDesencrypter">Desencriptar</button>
+					</div>
+				</div>
+			</section>
+			<section class="viewerSection">
+				<div class="encryptEmpty">
+					<img
+						src="../Images/Muñeco.png"
+						alt="Personaje de camisa y cabello azul, con pantalon blanco y zapatos negros, arrodillado sosteniendo una lupa a 90° en la mano derecha, observando un diamante con curiosidad, como si estuviese buscando algo"
+					/>
+				</div>
+				<div class="encryptEmptyMessage">
+					<h2>Ningún mensaje fue encontrado</h2>
+					<p>Ingresa el texto que desees encriptar o desencriptar.</p>
+				</div>
+				<div class="encrypterResult"></div>
+			</section>
+		</main>
+	</body>
+</html>
