@@ -61,22 +61,54 @@ function copyText() {
 	// Copia el texto seleccionado al portapapeles utilizando el API Clipboard
 	navigator.clipboard
 		.writeText(rango.toString())
-		.then(() => {})
+		.then(() => {
+			Swal.fire({
+				position: "center",
+				icon: "success",
+				title: "¡Copiado!",
+				showConfirmButton: false,
+				padding: "2em",
+				timer: 1500,
+			});
+		})
 		.catch((error) => {
-			alert(
-				"Ocurrio un error inesperado al copiar el texto al portapapeles, revise la consola para ver el error"
-			);
+			Swal.fire({
+				title: "Ups!",
+				text: "Ocurrio un error inesperado al copiar el texto al portapapeles, revise la consola para ver el error",
+				icon: "warning",
+				confirmButtonColor: "#0a3871",
+				confirmButtonText: "Ok",
+				iconColor: "#ff0000",
+			});
 			console.error("Error al copiar el texto: ", error);
 		});
 }
 
 function validations(value) {
 	if (!value || value.trim() === "") {
-		alert("Por favor digite un mensaje");
+		Swal.fire({
+			title: "Por favor digite un mensaje",
+			text: "¡El area de texto esta vacía!",
+			icon: "warning",
+			confirmButtonColor: "#0a3871",
+			confirmButtonText: "Ok",
+			iconColor: "#0a3871",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				document.getElementById("textArea").focus();
+			}
+		});
 		return false;
 	}
 	if (!/^[a-zñ]+$/.test(value)) {
-		alert("No se permiten MAYÚSCULAS ni acentos (áéíóúü)");
+		Swal.fire({
+			title: "¿Leiste la advertencía?",
+			text: "No se permiten MAYÚSCULAS ni acentos (áéíóúü)",
+			icon: "error",
+			confirmButtonColor: "#0a3871",
+			confirmButtonText: "Ok",
+			iconColor: "#ff0000",
+		});
 		return false;
 	}
 	return true;
