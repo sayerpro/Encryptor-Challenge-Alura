@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" type="text/css" href="../Css/Reset.css" />
 		<link rel="stylesheet" type="text/css" href="Style.css" />
-		<script src="Script.js"></script>
+		<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,400&f[]=stardom@400&f[]=montserrat@400&display=swap" rel="stylesheet">
 		<title>Encriptador - Alura</title>
 	</head>
 	<body>
@@ -25,27 +25,44 @@
 						name="textArea"
 						id="textArea"
 					></textarea>
+					<span class="textAreaWarning"
+						><span class="textAreaWarningSign">&#33</span> Solo se permiten
+						letras minúsculas y sin acentos</span
+					>
 				</div>
 				<div class="buttonsContainer">
 					<div class="buttonsContent">
-						<button id="buttonEncrypter">Encriptar</button>
-						<button id="buttonDesencrypter">Desencriptar</button>
+						<button onclick="encrypt()" id="buttonEncrypter">Encriptar</button>
+						<button onclick="desEncrypt()" id="buttonDesencrypter">Desencriptar</button>
 					</div>
 				</div>
 			</section>
 			<section class="viewerSection">
-				<div class="encryptEmpty">
-					<img
-						src="../Images/Muñeco.png"
-						alt="Personaje de camisa y cabello azul, con pantalon blanco y zapatos negros, arrodillado sosteniendo una lupa a 90° en la mano derecha, observando un diamante con curiosidad, como si estuviese buscando algo"
-					/>
+				<div class="encryptEmpty" id="encryptEmpty">
+					<div class="encryptImage">
+						<img
+							src="../Images/Muñeco.png"
+							alt="Personaje de camisa y cabello azul, con pantalon blanco y zapatos negros, arrodillado sosteniendo una lupa a 90° en la mano derecha, observando un diamante con curiosidad, como si estuviese buscando algo"
+						/>
+					</div>
+					<div class="encryptEmptyMessage">
+						<h2>Ningún mensaje fue encontrado</h2>
+						<p>Ingresa el texto que desees encriptar o desencriptar.</p>
+					</div>
 				</div>
-				<div class="encryptEmptyMessage">
-					<h2>Ningún mensaje fue encontrado</h2>
-					<p>Ingresa el texto que desees encriptar o desencriptar.</p>
+				<div class="encrypterResult" id="encrypterResult">
+					<div class="encrypterText">
+						<p id="textEncrypt"></p>
+					</div>
+					<div class="buttonContainer">
+						<button onclick="copyText()" id="buttonCopy">Copiar</button>
+					</div>
 				</div>
-				<div class="encrypterResult"></div>
 			</section>
 		</main>
+		<footer>
+			<p>Web de Encriptación. By: TheSrSmith | Email: sayerpro.op7@gmail.com - &COPY Copyright - Encrypter Challenge - Oracle One & Alura Latam 2023</p>
+		</footer>
 	</body>
+	<script src="Script.js"></script>
 </html>
