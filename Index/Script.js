@@ -7,7 +7,7 @@ changeViewer("encrypterResult", "none");
 function encrypt() {
 	const text = document.getElementById("textArea").value;
 	if (validations(text)) {
-		const textEncrypt = encryptText(text);
+		const textEncrypt = processText(text, true);
 		clearValues("textArea");
 		changeViewer("encryptEmpty", "none");
 		changeViewer("encrypterResult", "block");
@@ -15,18 +15,27 @@ function encrypt() {
 	}
 }
 
-function encryptText(text) {
-	let processText = text;
+let charactersToEncrypt = {
+	a: { encrypt: "ai", desEncrypt: "aimes" },
+	e: { encrypt: "enter", desEncrypt: "enter" },
+	i: { encrypt: "imes", desEncrypt: "imes" },
+	o: { encrypt: "ober", desEncrypt: "ober" },
+	u: { encrypt: "ufat", desEncrypt: "ufat" },
+};
 
-	processText = processText.replaceAll("a", "ai");
-	processText = processText.replaceAll("e", "enter");
-	processText = processText.replaceAll("i", "imes");
-	processText = processText.replaceAll("o", "ober");
-	processText = processText.replaceAll("u", "ufat");
+function processText(text, encrypt) {
+	if (encrypt) {
+		Object.keys(charactersToEncrypt).forEach((key) => {
+			text = text.replaceAll(key, charactersToEncrypt[key].encrypt);
+		});
+	} else {
+		Object.keys(charactersToEncrypt).forEach((key) => {
+			text = text.replaceAll(charactersToEncrypt[key].desEncrypt, key);
+		});
+	}
 
-	return processText;
+	return text;
 }
-
 function clearValues(element) {
 	document.getElementById(element).value = "";
 }
@@ -34,21 +43,9 @@ function clearValues(element) {
 function desEncrypt() {
 	const text = document.getElementById("textArea").value;
 	if (validations(text)) {
-		const textDesEncrypt = desEncryptText(text);
+		const textDesEncrypt = processText(text, false);
 		document.getElementById("textEncrypt").textContent = textDesEncrypt;
 	}
-}
-
-function desEncryptText(text) {
-	let processText = text;
-
-	processText = processText.replaceAll("aimes", "a");
-	processText = processText.replaceAll("enter", "e");
-	processText = processText.replaceAll("imes", "i");
-	processText = processText.replaceAll("ober", "o");
-	processText = processText.replaceAll("ufat", "u");
-
-	return processText;
 }
 
 function copyText() {
@@ -100,7 +97,7 @@ function validations(value) {
 		});
 		return false;
 	}
-	if (!/^[a-zñ]+$/.test(value)) {
+	if (!/^[a-zñ ]+$/.test(value)) {
 		Swal.fire({
 			title: "¿Leiste la advertencía?",
 			text: "No se permiten MAYÚSCULAS ni acentos (áéíóúü)",
