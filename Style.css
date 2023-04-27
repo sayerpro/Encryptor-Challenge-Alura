@@ -131,11 +131,12 @@ main {
 }
 
 .textAreaWarning {
-	width: 40%;
+	width: 100%;
 	color: #495057;
-	display: block;
+	display: flex;
 	margin: 0 0 10px 0;
-	float: right;
+	justify-content: center;
+	font-weight: bold;
 }
 
 #textArea::placeholder {
@@ -383,7 +384,7 @@ body.darkMode {
 }
 
 .darkMode #buttonDesencrypter {
-	box-shadow: rgba(0, 0, 0, 0.1);
+	box-shadow: #0000001a;
 }
 
 .darkMode .viewerSection {
@@ -411,8 +412,7 @@ body.darkMode {
 }
 
 .darkMode footer {
-	font-size: 14px;
+	font-size: 20px;
 	background: #ffffff1a;
 	color: #ffffff;
-	font-weight: bold;
 }
