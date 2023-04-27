@@ -149,8 +149,9 @@ main {
 }
 
 #buttonEncrypter,
-#buttonDesencrypter {
-	padding: 2% 12%;
+#buttonDesencrypter,
+#buttonCopy,
+#buttonReset {
 	font-weight: bold;
 	border-radius: 15px;
 	box-shadow: 0px 5px 5px#797979;
@@ -160,12 +161,14 @@ main {
 }
 
 #buttonEncrypter {
+	padding: 2% 12%;
 	color: #ffffff;
 	background: #0a3871;
 	margin-right: 15px;
 }
 
 #buttonDesencrypter {
+	padding: 2% 12%;
 	color: #0a3871;
 	background: #d8dfe8;
 	margin-left: 15px;
@@ -173,7 +176,8 @@ main {
 
 #buttonEncrypter:hover,
 #buttonDesencrypter:hover,
-#buttonCopy:hover {
+#buttonCopy:hover,
+#buttonReset:hover {
 	transform: scale(1.1);
 }
 
@@ -215,7 +219,7 @@ main {
 	width: 100%;
 	color: #495057;
 	font-size: 20px;
-	height: 665px;
+	height: 580px;
 }
 
 .buttonContainer {
@@ -227,13 +231,14 @@ main {
 #buttonCopy {
 	padding: 4% 40%;
 	color: #ffffff;
-	background: #0a3871;
-	font-weight: bold;
-	border-radius: 15px;
-	box-shadow: 0px 5px 5px#797979;
-	cursor: pointer;
-	transition: 1s transform;
-	font-size: 16px;
+	background: #0c458a;
+}
+
+#buttonReset {
+	margin-top: 10px;
+	padding: 4% 41%;
+	color: #0a3871;
+	background: #d8dfe8;
 }
 
 footer {
@@ -285,6 +290,11 @@ footer {
 	.textAreaWarning {
 		width: 100%;
 		margin: 0 0 30px 0;
+		text-align: center;
+	}
+
+	.textAreaWarningSign {
+		height: 1%;
 	}
 
 	.buttonsContent {
@@ -324,6 +334,7 @@ footer {
 
 	footer {
 		text-align: justify;
+		text-align: center;
 	}
 }
 
@@ -383,10 +394,6 @@ body.darkMode {
 	box-shadow: 0px 5px 5px #0000001a;
 }
 
-.darkMode #buttonDesencrypter {
-	box-shadow: #0000001a;
-}
-
 .darkMode .viewerSection {
 	border: 2px solid #ffffff1a;
 	color: #dfdfdf;
@@ -407,7 +414,8 @@ body.darkMode {
 	color: #ffffff;
 }
 
-.darkMode #buttonCopy {
+.darkMode #buttonCopy,
+#buttonReset {
 	box-shadow: 0px 5px 5px #0000001a;
 }
 

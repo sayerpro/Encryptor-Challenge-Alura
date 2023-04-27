@@ -45,6 +45,8 @@ function desEncrypt() {
 	const text = document.getElementById("textArea").value;
 	if (validations(text)) {
 		const textDesEncrypt = processText(text, false);
+		changeViewer("encryptEmpty", "none");
+		changeViewer("encrypterResult", "block");
 		document.getElementById("textEncrypt").textContent = textDesEncrypt;
 	}
 }
@@ -134,4 +136,11 @@ function settingDarkMode() {
 
 function setStorageValue(value) {
 	localStorage.setItem("darkMode", value);
+}
+
+function reset() {
+	document.getElementById("textEncrypt").textContent = "";
+	document.getElementById("textArea").value = "";
+	changeViewer("encryptEmpty", "block");
+	changeViewer("encrypterResult", "none");
 }
