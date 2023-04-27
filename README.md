@@ -4,9 +4,9 @@ Este repositorio fue creado con fines estudiantiles y de práctica para resolver
 
 ---
 
-###Web desplegada en GitHub-Pages [Clic aquí](https://sayerpro.github.io/Encryptor-Challenge-Alura/Index.html "Clic aquí")
+### Web desplegada en GitHub-Pages [Clic aquí](https://sayerpro.github.io/Encryptor-Challenge-Alura/Index.html "Clic aquí")
 
-##Características
+## Características
 
 - ###### Encriptar texto con unas determinadas reglas.
 - ###### Desencriptar el texto encriptado con las mismas reglas.
