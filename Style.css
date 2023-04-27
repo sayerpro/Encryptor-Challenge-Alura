@@ -43,6 +43,9 @@ main {
 	cursor: pointer;
 	margin-right: 20px;
 	font-size: 3em;
+}
+
+.gitHubIcon i {
 	color: #000000;
 }
 
@@ -50,6 +53,9 @@ main {
 	cursor: pointer;
 	margin-right: 20px;
 	font-size: 3em;
+}
+
+.linkedInIcon i {
 	color: #0a66c2;
 }
 
@@ -206,7 +212,6 @@ main {
 
 .encrypterText {
 	width: 100%;
-	text-align: justify;
 	color: #495057;
 	font-size: 20px;
 	height: 665px;
@@ -389,6 +394,7 @@ body.darkMode {
 
 .darkMode .viewerSection img {
 	mix-blend-mode: multiply;
+	filter: saturate(2) drop-shadow(1px 2px 0px black);
 }
 
 .darkMode .encryptEmptyMessage p {
