@@ -16,7 +16,7 @@ main {
 	border-radius: 10px;
 }
 
-header {
+.header {
 	display: flex;
 	justify-content: space-between;
 }
