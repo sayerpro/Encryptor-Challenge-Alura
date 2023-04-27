@@ -13,23 +13,39 @@
 	<body>
 		<main>
 			<section class="logoSection">
-				<div class="logoContainer">
-					<img
-						class="logoContent"
-						src="Images/Logo.png"
-						alt="Logo de Alura color azul obscuro"
-					/>
-				</div>
+				<header>
+					<div class="logoContainer">
+						<img
+							class="logoContent"
+							src="Images/Logo.png"
+							alt="Logo de Alura color azul obscuro"/>
+					</div>
+					<div class="linkDarkMode">
+						<div class="gitHubIcon">
+							<a href="https://github.com/sayerpro/" target="_blank">
+								<i class="fa-brands fa-square-github"></i>
+							</a>
+						</div>
+						<div class="linkedInIcon">
+							<a href="https://www.linkedin.com/in/thesrsmith/" target="_blank">
+								<i class="fa-brands fa-linkedin"></i>
+							</a>
+						</div>
+						<button class="buttonDark" id="buttonDark">
+							<span><i class="fa-solid fa-cloud-sun"></i></span>
+							<span><i class="fa-solid fa-cloud-moon"></i></span>
+						</button>
+					</div>
+				</header>
 				<div class="textAreaContainer">
 					<textarea
-						placeholder="Digita tu mensaje aqui"
+						placeholder="Digita tu mensaje aquí"
 						name="textArea"
-						id="textArea"
-					></textarea>
-					<span class="textAreaWarning"
-						><span class="textAreaWarningSign">&#33</span> Solo se permiten
-						letras minúsculas y sin acentos</span
-					>
+						id="textArea"></textarea>
+					<div class="textAreaWarning">
+						<span class="textAreaWarningSign">&#33</span>
+						Solo se permiten letras minúsculas y sin acentos
+					</div>
 				</div>
 				<div class="buttonsContainer">
 					<div class="buttonsContent">
@@ -43,8 +59,7 @@
 					<div class="encryptImage">
 						<img
 							src="Images/Muñeco.png"
-							alt="Personaje de camisa y cabello azul, con pantalon blanco y zapatos negros, arrodillado sosteniendo una lupa a 90° en la mano derecha, observando un diamante con curiosidad, como si estuviese buscando algo"
-						/>
+							alt="Personaje de camisa y cabello azul, con pantalon blanco y zapatos negros, arrodillado sosteniendo una lupa a 90° en la mano derecha, observando un diamante con curiosidad, como si estuviese buscando algo"/>
 					</div>
 					<div class="encryptEmptyMessage">
 						<h2>Ningún mensaje fue encontrado</h2>
@@ -67,5 +82,6 @@
 		<script src="Script.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/a307cda0b0.js" crossorigin="anonymous"></script>
 	</body>
 </html>

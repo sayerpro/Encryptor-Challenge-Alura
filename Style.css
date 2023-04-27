@@ -16,9 +16,86 @@ main {
 	border-radius: 10px;
 }
 
+header {
+	display: flex;
+	justify-content: space-between;
+}
+
 .logoSection {
 	display: inline-block;
 	width: 70%;
+}
+
+.logoContainer {
+	width: 50%;
+}
+
+.linkDarkMode {
+	width: 50%;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	align-content: space-between;
+	justify-content: flex-end;
+}
+
+.gitHubIcon {
+	cursor: pointer;
+	margin-right: 20px;
+	font-size: 3em;
+	color: #000000;
+}
+
+.linkedInIcon {
+	cursor: pointer;
+	margin-right: 20px;
+	font-size: 3em;
+	color: #0a66c2;
+}
+
+.buttonDark {
+	margin-right: 70px;
+	background: #343d5b;
+	border-radius: 1000px;
+	border: none;
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	outline: none;
+}
+
+.buttonDark::after {
+	content: "";
+	display: block;
+	width: 30px;
+	height: 32px;
+	position: absolute;
+	background: #ffffff;
+	top: 0;
+	left: 0;
+	right: unset;
+	border-radius: 100px;
+	transition: 0.3s ease all;
+	box-shadow: 0px 0px 2px 2px #00000033;
+}
+
+.darkMode .buttonDark {
+	background: #ffa500;
+	color: #000000;
+}
+
+.darkMode .buttonDark::after {
+	right: 0;
+	left: unset;
+}
+
+.buttonDark span {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	background: none;
+	color: #d8dfe8;
 }
 
 .textAreaContainer {
@@ -35,8 +112,9 @@ main {
 	font-size: 3em;
 	margin: 40px 0 40px 0;
 	padding: 30px;
-	background-color: #eff1fa;
+	background-color: #ffffff;
 	color: #0a3871;
+	border-radius: 10px;
 }
 
 .textAreaWarningSign {
@@ -262,4 +340,73 @@ footer {
 		width: 100%;
 		padding: 4% 30%;
 	}
+}
+
+body.darkMode {
+	background: linear-gradient(to right, #0f1f33, #1e4575);
+}
+
+.darkMode main {
+	background: #ffffff05;
+	box-shadow: 0 0 20px #00000012;
+}
+
+.darkMode #textArea {
+	border-radius: 10px;
+	color: #ffffff;
+	background: #00000033;
+}
+
+.darkMode #textArea:focus-visible {
+	outline: #335f97 3px solid;
+}
+
+.darkMode .textAreaWarning {
+	width: 100%;
+	text-align: center;
+	color: #ffffff33;
+	font-weight: bold;
+}
+
+.darkMode #textArea::placeholder {
+	color: #1b426a;
+}
+
+.darkMode #buttonEncrypter,
+#buttonDesencrypter {
+	box-shadow: 0px 5px 5px #0000001a;
+}
+
+.darkMode #buttonDesencrypter {
+	box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.darkMode .viewerSection {
+	border: 2px solid #ffffff1a;
+	color: #dfdfdf;
+	background-color: #00000000;
+}
+
+.darkMode .viewerSection img {
+	mix-blend-mode: multiply;
+}
+
+.darkMode .encryptEmptyMessage p {
+	color: #aaaaaa;
+	font-weight: lighter;
+}
+
+.darkMode .encrypterText {
+	color: #ffffff;
+}
+
+.darkMode #buttonCopy {
+	box-shadow: 0px 5px 5px #0000001a;
+}
+
+.darkMode footer {
+	font-size: 14px;
+	background: #ffffff1a;
+	color: #ffffff;
+	font-weight: bold;
 }

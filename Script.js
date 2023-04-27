@@ -1,5 +1,6 @@
 function changeViewer(viewer, status) {
 	document.getElementById(viewer).style.display = status;
+	document.getElementById("textArea").focus();
 }
 
 changeViewer("encrypterResult", "none");
@@ -16,11 +17,11 @@ function encrypt() {
 }
 
 let charactersToEncrypt = {
-	a: { encrypt: "ai", desEncrypt: "aimes" },
-	e: { encrypt: "enter", desEncrypt: "enter" },
-	i: { encrypt: "imes", desEncrypt: "imes" },
-	o: { encrypt: "ober", desEncrypt: "ober" },
-	u: { encrypt: "ufat", desEncrypt: "ufat" },
+	a: {encrypt: "ai", desEncrypt: "aimes"},
+	e: {encrypt: "enter", desEncrypt: "enter"},
+	i: {encrypt: "imes", desEncrypt: "imes"},
+	o: {encrypt: "ober", desEncrypt: "ober"},
+	u: {encrypt: "ufat", desEncrypt: "ufat"},
 };
 
 function processText(text, encrypt) {
@@ -85,7 +86,7 @@ function validations(value) {
 	if (!value || value.trim() === "") {
 		Swal.fire({
 			title: "Por favor digite un mensaje",
-			text: "¡El area de texto esta vacía!",
+			text: "¡El área de texto esta vacía!",
 			icon: "warning",
 			confirmButtonColor: "#0a3871",
 			confirmButtonText: "Ok",
@@ -97,9 +98,9 @@ function validations(value) {
 		});
 		return false;
 	}
-	if (!/^[a-zñ ]+$/.test(value)) {
+	if (!/^[a-zñ0-9 ]+$/.test(value)) {
 		Swal.fire({
-			title: "¿Leiste la advertencía?",
+			title: "¿Leíste la advertencia?",
 			text: "No se permiten MAYÚSCULAS ni acentos (áéíóúü)",
 			icon: "error",
 			confirmButtonColor: "#0a3871",
@@ -109,4 +110,28 @@ function validations(value) {
 		return false;
 	}
 	return true;
+}
+
+const buttonDark = document.getElementById("buttonDark");
+const body = document.querySelector("body");
+
+settingDarkMode();
+
+buttonDark.addEventListener("click", (e) => {
+	body.classList.toggle("darkMode");
+	setStorageValue(body.classList.contains("darkMode"));
+});
+
+function settingDarkMode() {
+	const darkMode = localStorage.getItem("darkMode");
+
+	if (!darkMode) {
+		setStorageValue("false");
+	} else if (darkMode == "true") {
+		body.classList.add("darkMode");
+	}
+}
+
+function setStorageValue(value) {
+	localStorage.setItem("darkMode", value);
 }
