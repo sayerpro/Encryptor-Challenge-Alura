@@ -1,3 +1,8 @@
+/**
+ * Función que cambia la visibilidad del visualizador de resultados de encriptación/desencriptación
+ * @param {string} viewer
+ * @param {string} status
+ */
 function changeViewer(viewer, status) {
 	document.getElementById(viewer).style.display = status;
 	document.getElementById("textArea").focus();
@@ -5,6 +10,9 @@ function changeViewer(viewer, status) {
 
 changeViewer("encrypterResult", "none");
 
+/**
+ * Función encargada de llevar el paso a paso e ir llamando la lógica para encriptar el texto
+ */
 function encrypt() {
 	const text = document.getElementById("textArea").value;
 	if (validations(text)) {
@@ -24,6 +32,12 @@ let charactersToEncrypt = {
 	u: {encrypt: "ufat", desEncrypt: "ufat"},
 };
 
+/**
+ * Lógica encargada de encriptar y desencriptar texto dependiendo de los argumentos recibidos
+ * @param {string} text
+ * @param {boolean} encrypt
+ * @returns string
+ */
 function processText(text, encrypt) {
 	if (encrypt) {
 		Object.keys(charactersToEncrypt).forEach((key) => {
@@ -37,10 +51,18 @@ function processText(text, encrypt) {
 
 	return text;
 }
+
+/**
+ * Limpia el valor del elemento recibido
+ * @param {string} element
+ */
 function clearValues(element) {
 	document.getElementById(element).value = "";
 }
 
+/**
+ * Función encargada de llevar el paso a paso e ir llamando la lógica para desencriptar el texto
+ */
 function desEncrypt() {
 	const text = document.getElementById("textArea").value;
 	if (validations(text)) {
@@ -51,39 +73,87 @@ function desEncrypt() {
 	}
 }
 
+// /**
+//  * Ejecuta lógica para copiar el texto de un elemento del DOM y lo guarda en el portapapeles, tiene validaciones y muestra pop ups para informar al usuario utiliza navigator.clipboard para navegadores con versiones recientes
+//  */
 function copyText() {
-	let elemento = document.getElementById("textEncrypt");
-
-	// Crea un rango de selección para el contenido del elemento
-	let rango = document.createRange();
-	rango.selectNodeContents(elemento);
-
-	// Copia el texto seleccionado al portapapeles utilizando el API Clipboard
-	navigator.clipboard
-		.writeText(rango.toString())
-		.then(() => {
-			Swal.fire({
-				position: "center",
-				icon: "success",
-				title: "¡Copiado!",
-				showConfirmButton: false,
-				padding: "2em",
-				timer: 1500,
+	const element = document.getElementById("textEncrypt");
+	const text = element.innerText;
+	// Copiar el texto seleccionado al portapapeles utilizando el API Clipboard
+	if (navigator.clipboard) {
+		navigator.clipboard
+			.writeText(text)
+			.then(() => {
+				succesAlert();
+			})
+			.catch((error) => {
+				console.error(
+					"Error al copiar al portapapeles con API Clipboard:",
+					error
+				);
+				fallbackCopy(element);
 			});
-		})
-		.catch((error) => {
-			Swal.fire({
-				title: "Ups!",
-				text: "Ocurrio un error inesperado al copiar el texto al portapapeles, revise la consola para ver el error",
-				icon: "warning",
-				confirmButtonColor: "#0a3871",
-				confirmButtonText: "Ok",
-				iconColor: "#ff0000",
-			});
-			console.error("Error al copiar el texto: ", error);
-		});
+	} else {
+		fallbackCopy(element);
+	}
 }
 
+// /**
+//  * Ejecuta lógica para copiar el texto de un elemento del DOM y lo guarda en el portapapeles, tiene validaciones y muestra pop ups para informar al usuario se utiliza execCommand para navegadores con versiones antiguas
+//  */
+function fallbackCopy() {
+	try {
+		// Seleccionar el texto en el rango
+		window.getSelection().removeAllRanges();
+		let rango = document.createRange();
+		rango.selectNodeContents(element);
+		window.getSelection().addRange(rango);
+
+		// Copiar el texto seleccionado al portapapeles
+		document.execCommand("copy");
+		succesAlert();
+	} catch (error) {
+		console.error("Error al copiar al portapapeles con execCommand:", error);
+		showError();
+	} finally {
+		// Deseleccionar el texto
+		window.getSelection().removeAllRanges();
+	}
+}
+
+/**
+ * Llama la librería SweetAlert2 y genera un pop up de SuccesAlert
+ */
+function succesAlert() {
+	Swal.fire({
+		position: "center",
+		icon: "success",
+		title: "¡Copiado!",
+		showConfirmButton: false,
+		padding: "2em",
+		timer: 1500,
+	});
+}
+
+/**
+ * Llama la librería SweetAlert2 y genera un pop up de warningAlert
+ */
+function showError() {
+	Swal.fire({
+		title: "Ups",
+		text: "Ocurrio un error inesperado al copiar el texto al portapapeles, revise la consola para ver el error",
+		icon: "warning",
+		confirmButtonColor: "#0a3871",
+		confirmButtonText: "Ok",
+		iconColor: "#ff0000",
+	});
+}
+
+/**
+ * Función que ejecuta todas las validaciones requeridas para los campos de texto; Muestra pop ups para informar al usuario
+ * @param {string} value
+ * @returns boolean
+ */
 function validations(value) {
 	if (!value || value.trim() === "") {
 		Swal.fire({
@@ -119,11 +189,17 @@ const body = document.querySelector("body");
 
 settingDarkMode();
 
+/**
+ * Metodo de escucha, cuando se hace clic en un elemento del DOM (agrega una clase y avisa para guardar el estado en el localStorage)
+ */
 buttonDark.addEventListener("click", (e) => {
 	body.classList.toggle("darkMode");
 	setStorageValue(body.classList.contains("darkMode"));
 });
 
+/**
+ * Pregunta si el valor darkMode existe en el localStorage dependiendo la lógica lo cambia true/false
+ */
 function settingDarkMode() {
 	const darkMode = localStorage.getItem("darkMode");
 
@@ -134,10 +210,17 @@ function settingDarkMode() {
 	}
 }
 
+/**
+ * Guarda un booleano en el localStorage
+ * @param {boolean} value
+ */
 function setStorageValue(value) {
 	localStorage.setItem("darkMode", value);
 }
 
+/**
+ * Función que resetea los campos de texto y la visibilidad del visualizador de resultados de encriptación/desencriptación
+ */
 function reset() {
 	document.getElementById("textEncrypt").textContent = "";
 	document.getElementById("textArea").value = "";
