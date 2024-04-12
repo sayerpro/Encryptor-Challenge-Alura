@@ -28,6 +28,6 @@ Este repositorio fue creado con fines estudiantiles y de práctica para resolver
 
 ---
 
-Desarrollador por: **TheSrSmith ♥** - <a href="https://github.com/sayerpro/" target="_blank"><span>GitHub</span></a> - <a href="https://www.linkedin.com/in/thesrsmith/" target="_blank"><span>LinkedIn</span></a>
+Desarrollador por: **TheSrSmith ♥** - <a href="https://github.com/sayerpro/" target="_blank"><span>GitHub</span></a>
 
 > Última fecha de actualización 27/04/2023 15:58 Versión 0.0.1 Autor - **TheSrSmith ♥**
